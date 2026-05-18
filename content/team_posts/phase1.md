@@ -7,9 +7,9 @@ slug: "phase1post"
 tags: ["project", "phase1", "climate"]
 authors:
   - "yadiel_cruz"
-  - "hamza_chakir"
-  - "oliver_beaulieu"
-  - "james_chan"
+  - "hamza"
+  - "oliver"
+  - "james"
 showAuthorsBadges: false
 ---
 # TERRA: Tracking European Climate Risk & Refugee Asylum
