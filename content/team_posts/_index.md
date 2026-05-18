@@ -7,9 +7,9 @@ tags: ["project", "phase1", "climate"]
 slug: "phase1post"
 authors:
   - "yadiel_cruz"
-  - "hamza_chakir"
-  - "oliver_beaulieu"
-  - "james_chan"
+  - "hamza"
+  - "oliver"
+  - "james"
 showAuthorsBadges : false
 ---
 
