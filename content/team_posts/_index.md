@@ -1,15 +1,18 @@
 ---
-title: "Project - Phase I"
-date: 2024-05-11
+title: "Project - Phase I: TERRA"
+date: 2026-05-18
 draft: false
-description: "Our Idea"
-tags: ["authors", "config", "docs"]
-slug: "index"
+description: "Tracking European Climate Risk & Refugee Asylum — our Phase 1 design report"
+tags: ["project", "phase1", "climate"]
+slug: "phase1post"
 authors:
-  - "eric_gerber"
+  - "yadiel_cruz"
+  - "hamza_chakir"
+  - "oliver_beaulieu"
+  - "james_chan"
 showAuthorsBadges : false
 ---
 
-# Welcome to Team WeCanDoThis!
+# Welcome to Team Leuven!
 
-Welcome to the Professorial Team's Blog
+Welcome to our blog where we document the development of TERRA an app tracking climate related displacement across Europe.
