@@ -26,43 +26,53 @@ Overall, our goal with TERRA is to provide a better understanding of how climate
 
 ## Persona 1 — Gabriel Diallo, Policy Analyst
 
-Description:
-Lucas is a 31 year old policy analyst that is from Brussels who researches climate adaptation and migration policy. He needs data that’s data in order to support policy presentations and recommendations to his team.
+## Description:
+-Lucas is a 31 year old policy analyst that is from Brussels who researches climate adaptation and migration policy. He needs data that’s data in order to support policy presentations and recommendations to his team.
 
 User Stories:
- As Lucas, I want to compare displacement trends between countries so that I can identify regions that are in high risk zones.
-As Lucas, I want charts that are downloadable so that I can present them in reports and presentations.
-As Lucas, I want to understand major climate stressors by country so that I can support discussions with my team
-As Lucas, I want historical trends which will help me analyze changes over time.
-As Lucas, I want countries grouped by similarity so that I can identify common patterns.
+      -As Lucas, I want to compare displacement trends between countries so that I can identify regions that are in high risk zone
+      
+      -As Lucas, I want charts that are downloadable so that I can present them in reports and presentations.
+      
+      -As Lucas, I want to understand major climate stressors by country so that I can support discussions with my team
+      
+      -As Lucas, I want historical trends which will help me analyze changes over time.
+      
+      -As Lucas, I want countries grouped by similarity so that I can identify common patterns.
 
 ## Persona 2 — Diana Willis, Humanitarian Coordinator
 
-Description:
-Sofia is a 38 year old humanitarian coordinator that works with non profits in order to support the displaced populations across Europe. She needs a tool that will help monitor risk and prioritize resources.
+## Description:
+-Sofia is a 38 year old humanitarian coordinator that works with non profits in order to support the displaced populations across Europe. She needs a tool that will help monitor risk and prioritize resources.
 
 User Stories:
-As Sofia, I want a list of countries so that I can monitor locations important to my work.
-As Sofia, I want a climate displacement risk classifications so that I can prioritize resources.
-As Sofia, I want historical displacement data so that I can understand the trends long term.
-As Sofia, I want country summaries so that I can quickly review conditions and understand where to direct resources to.
+      -As Sofia, I want a list of countries so that I can monitor locations important to my work.
+      
+      -As Sofia, I want a climate displacement risk classifications so that I can prioritize resources.
+      
+      -As Sofia, I want historical displacement data so that I can understand the trends long term.
+     
+      -As Sofia, I want country summaries so that I can quickly review conditions and understand where to direct resources to.
 
 ## Persona 3 — Mohammed Sako, Climate-Displaced Student
 
-Description:
-Mohammed is a 21 year old student at KU Leuven who is from a flood affected area in Southern Europe. He ended up relocating after many climate related disasters impacted his area. Due to his experiences he wants accessible information about climate risks and displacement trends affecting areas similar to his. 
+## Description:
+-Mohammed is a 21 year old student at KU Leuven who is from a flood affected area in Southern Europe. He ended up relocating after many climate related disasters impacted his area. Due to his experiences he wants accessible information about climate risks and displacement trends affecting areas similar to his. 
 
 User Stories:
-As Mohammed, I want to look at a map of Europe that shows climate displacement risks so that I can quickly identify regions facing challenges similar to mine.
-As Mohammed, I want to click on a country and see which climate events (floods, wildfires, droughts, etc.) are affecting them.
-As Mohammed, I want to explore the historical trends so that I can understand how conditions have changed over time in different regions.
-As Mohammed, I want information displayed through visuals and charts that are simple without worrying about a lot of technical knowledge
+      -As Mohammed, I want to look at a map of Europe that shows climate displacement risks so that I can quickly identify regions facing challenges similar to mine.
+     
+      -As Mohammed, I want to click on a country and see which climate events (floods, wildfires, droughts, etc.) are affecting them.
+    
+      -As Mohammed, I want to explore the historical trends so that I can understand how conditions have changed over time in different regions.
+     
+      -As Mohammed, I want information displayed through visuals and charts that are simple without worrying about a lot of technical knowledge
  
 
 
 # Candidate Data Sources
 
-## Source 1 — Open-Meteo
+## Source 1 — Open-Meteo6
 
 Purpose: Open-Meteo will be our primary climate data source as it provides historical and forecast weather information globally which includes temperature, precipitation, wind speed, and climate related indicators.
 
@@ -89,24 +99,4 @@ Utility to Personas: This supports Mohammed by helping him explore displacement 
 
 ## Source 3 — World Bank API
 
-Purpose: The World Bank provides socioeconomic context for since climate events don't fully explain the trends so economic and development indicators can help explain differences between countries.
-
-Link: https://datahelpdesk.worldbank.org/knowledgebase/topics/125589 
-
-API Access: The World Bank API is accessible and free to use.
-
-ML Data Contents: The World Bank has historical observations across more than 200 countries and thousands of indicators including GDP per capita, unemployment rates, population size, etc which would be good for our model.
-
-Utility to Personas: This supports Mohammed by giving context about climate vulnerability, Gabriel by supporting policy and economic analysis, and Diana by helping identify pressures that might also influence displacement.
-
 ## Source 4 — GDELT Project
-
-Purpose: GDELT will help us track news and events to help identify climate related disasters and humanitarian developments across Europe.
-
-Link: https://www.gdeltproject.org/ 
-
-API Access: GDELT is accessible, and updated without paywalls.
-
-ML Data Contents: GDELT has features like event descriptions, locations, timestamps which would be useful as we plan to focus on climate related events like floods, droughts, within Europe.
-
-Utility to Personas: This supports Mohammed by highlighting ongoing climate events, Gabriel by monitoring climate trends and events, and Diana by tracking where to prioritize resources.

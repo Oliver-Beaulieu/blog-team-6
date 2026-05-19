@@ -13,6 +13,6 @@ authors:
 showAuthorsBadges : false
 ---
 
-# Welcome to Team Leuven!
+# Welcome to team TERRA!
 
 Welcome to our blog where we document the development of TERRA an app tracking climate related displacement across Europe.
