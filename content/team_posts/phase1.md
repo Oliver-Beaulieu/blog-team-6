@@ -60,4 +60,24 @@ Utility to Personas: This supports Mohammed by helping him explore displacement 
 
 ## Source 3 — World Bank API
 
+Purpose: The World Bank provides socioeconomic context for since climate events don't fully explain the trends so economic and development indicators can help explain differences between countries.
+
+Link: https://datahelpdesk.worldbank.org/knowledgebase/topics/125589 
+
+API Access: The World Bank API is accessible and free to use.
+
+ML Data Contents: The World Bank has historical observations across more than 200 countries and thousands of indicators including GDP per capita, unemployment rates, population size, etc which would be good for our model.
+
+Utility to Personas: This supports Mohammed by giving context about climate vulnerability, Gabriel by supporting policy and economic analysis, and Diana by helping identify pressures that might also influence displacement.
+
 ## Source 4 — GDELT Project
+
+Purpose: GDELT will help us track news and events to help identify climate related disasters and humanitarian developments across Europe.
+
+Link: https://www.gdeltproject.org/ 
+
+API Access: GDELT is accessible, and updated without paywalls.
+
+ML Data Contents: GDELT has features like event descriptions, locations, timestamps which would be useful as we plan to focus on climate related events like floods, droughts, within Europe.
+
+Utility to Personas: This supports Mohammed by highlighting ongoing climate events, Gabriel by monitoring climate trends and events, and Diana by tracking where to prioritize resources.
