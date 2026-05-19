@@ -22,25 +22,25 @@
 [[main]]
   name = "Oliver Beaulieu"
   parent = "Team Members"
-  pageRef = "Oliver Beaulieu"
+  pageRef = "Oliver"
   weight = 20
 
 [[main]]
   name = "Hamza Chakir"
   parent = "Team Members"
-  pageRef = "Hamza Chakir"
+  pageRef = "Hamza"
   weight = 20
 
 [[main]]
   name = "Yadiel Cruz"
   parent = "Team Members"
-  pageRef = "Yadiel Cruz"
+  pageRef = "YadielCruz"
   weight = 20
 
 [[main]]
   name = "James Chan"
   parent = "Team Members"
-  pageRef = "James Chan"
+  pageRef = "James"
   weight = 20
 
 #[[main]]
