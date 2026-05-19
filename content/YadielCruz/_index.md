@@ -2,7 +2,7 @@
 title: "Yadiel Cruz"
 ---
 
-> 🗽 Combined CS & Economics student at Northeastern University
+> 🗽 Hi! I am Yadiel Cruz, a Combined CS & Economics student at Northeastern University. I’m really excited to be in this Dialogue!
 
 ---
 
