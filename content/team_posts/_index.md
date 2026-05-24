@@ -1,10 +1,10 @@
 ---
-title: "Project - Phase I: TERRA"
+title: "Project - Blog Post: TERRA"
 date: 2026-05-18
 draft: false
-description: "Tracking European Climate Risk & Refugee Asylum — our Phase 1 design report"
-tags: ["project", "phase1", "climate"]
-slug: "phase1post"
+description: "Tracking European Climate Risk & Refugee Asylum — our design report"
+tags: ["project", "phase", "climate"]
+slug: "phasePost"
 authors:
   - "yadiel_cruz"
   - "hamza"
