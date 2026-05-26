@@ -12,6 +12,7 @@ showTableOfContents: true
 
 # Contributions
 The parts of phase 2 of the project that I contributed to were cleaning the collected data, putting the cleaned data into a CSV file, and training a linear regression ML model with that cleaned data.
+Oliver collected data from 3 different sources: World Bank, Euro Stat, and Open Meteo. I then proceeded to clean up all three sources, putting the final output into a new CSV file called merged_data. Finally, I proceeded to train a linear regression ML model with the merged_data CSV file focusing on asylum applications.
 
 # Program Related
 Some things I did from the past week were going to the atomium, going bowling, and spending the Sunday in Bruges. 
