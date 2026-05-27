@@ -170,3 +170,28 @@ We implemented a linear regression model trained on 2010-2018 data and was teste
 - Build K-NN classifier using risk labels derived from asylum per 100k
 - Add cross-validation given the small dataset size
 
+## Wireframing
+### Home
+![Home](home.png)
+
+### Policy Analyst
+![PolicyGP1](GP1.png)
+![PolicyGP2](GP2.png)
+
+Persona 1 - 
+The first wireframe for the Policy Analyst focuses on the Compare page, which allows the user to select multiple countries, in this case Germany, France, Greece, and Spain, and view their asylum application trends over time from 2018 to 2023. The page shows a multi line graph where each country is color coded for easy comparison and a legend on the left shows which color represents which country. At the bottom of the page there are export options including Save, CSV, PNG, and PDF Summary so that the analyst is able to quickly take the visual and use it in reports or briefings.
+
+### Humanitarian Coordinator
+![HumanDP1](DP1.png)
+![HumanDP2](DP2.png)
+
+Persona 2 -
+The second wireframe is the Saved Views page, which lets the Policy Analyst store specific comparison setups for future use. The wireframe shows three saved views: Southern Frontline, Central Europe, and the Baltic States. Each saved view has a swap and update option which would allow the analyst to swap out countries or update the date range without having to start a new comparison from scratch.
+
+
+### Mohammed
+![MohammedMP1](MP1.png)
+![MohammedMP2](MP2.png)
+
+Persona 3 -
+The first wireframe for the Humanitarian Coordinator is the Europe Risk Map page, which gives a broad overview of risk levels across European countries through a grid of country codes . The countries are color coded based on their current risk level so the coordinator is able to quickly see where attention is needed. When a country is clicked, in this case Greece, a detail panel appears at the bottom showing key stats such as asylum applications being 42,300, top stress factors which are wildfires/heat, and active NGOs being 7. There is also a Manage NGOs button which gives the coordinator quick access to the NGO management features.
