@@ -9,6 +9,7 @@ authors:
 showAuthorsBadges: false
 showTableOfContents: true
 ---
+<<<<<<< HEAD
 
 ### Individual Contributions
 
@@ -19,3 +20,5 @@ Additionally, I also contributed to developing the first SQL DDL for the global 
 ### Program Reflection
 
 Outside of class something that stood out to me this week was visiting the Atomium in Brussels. This ended up being one of my favorite experiences just because of how unique the structure was and then when we got to the top the views were amazing and I even had Tyler take some pictures that I enjoyed and then being able to walk with friends.
+=======
+>>>>>>> c8bb25aad8ef270218c095d1d2aabc0005f279bd
