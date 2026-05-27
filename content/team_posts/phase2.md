@@ -140,11 +140,11 @@ Chosen to answer our key question, whether climate relates to displacement. Meas
 
 ### Time series (asylum applications per 100k over time)
 
-Chosen to show that displacement is not uniform across countries. Observing our plot, we can see clear spikes in 2015 for Austria, Germany and Sweden. However, no sever climate event happened, instead, that was the year of the Syrian refugee crisis. This is a clear example of how geopolitical events heavily influence displacement. This type of context is important for interpreting model errors.
+Chosen to show that displacement is not uniform across countries. Observing our plot, we can see clear spikes in 2015 for Austria, Germany and Sweden. However, no sever climate event happened, instead, that was the year of the Syrian refugee crisis. This is a clear example of how geopolitical events heavily influence displacement. This type of context is important for interpreting model errors. 
 
 ### Country comparison bar chart
 
-Chosen to easily interpret asylum rates per population. This graph shows how small countries by population like Cyprus, Malta and Luxemburg show disproportionately high asylum rates. Normalizing by population gives us a more meaningful cross-country comparisons.
+Chosen to easily interpret asylum rates per population. This graph shows how small countries by population like Cyprus, Malta and Luxemburg show disproportionately high asylum rates. Normalizing by population gives us a more meaningful cross-country comparisons. 
 
 ---
 
@@ -152,7 +152,7 @@ Chosen to easily interpret asylum rates per population. This graph shows how sma
 
 ### What was implemented
 
-We implemented a linear regression model trained on 2010-2018 data and was tested on 2019-2023, predicting asylum applications using climate, population and economic variables.
+We implemented a linear regression model trained on 2010-2018 data and was tested on 2019-2023, predicting asylum applications using climate, population and economic variables. 
 
 ## Results
 
@@ -166,7 +166,7 @@ We implemented a linear regression model trained on 2010-2018 data and was teste
 
 ## Tasks remaining
 
-- Integrade another additional feature that can help support model accuracy
+- Integrade another additional feature that can help support model accuracy 
 - Build K-NN classifier using risk labels derived from asylum per 100k
 - Add cross-validation given the small dataset size
 
