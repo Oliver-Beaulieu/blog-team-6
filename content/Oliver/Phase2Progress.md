@@ -1,5 +1,5 @@
 ---
-title: "Oliver Beaulieu"
+title: "Oliver's Second Week Reflection"
 date: 2026-05-26
 draft: false
 description: "Phase 2 discussion and contributions"

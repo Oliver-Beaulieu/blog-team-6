@@ -132,3 +132,41 @@ CREATE TABLE ngo_country (
 );
 ```
 
+## Data Visualization & Interpretation
+
+### Correlation heatmap
+
+Chosen to answer our key question, whether climate relates to displacement. Measuring displacement as asylum applications, the results showed a weak but statistically significant correlation between temperature, dry days, and asylum applications per 100k (r=0.26, p<0.05).
+
+### Time series (asylum applications per 100k over time)
+
+Chosen to show that displacement is not uniform across countries. Observing our plot, we can see clear spikes in 2015 for Austria, Germany and Sweden. However, no sever climate event happened, instead, that was the year of the Syrian refugee crisis. This is a clear example of how geopolitical events heavily influence displacement. This type of context is important for interpreting model errors. 
+
+### Country comparison bar chart
+
+Chosen to easily interpret asylum rates per population. This graph shows how small countries by population like Cyprus, Malta and Luxemburg show disproportionately high asylum rates. Normalizing by population gives us a more meaningful cross-country comparisons. 
+
+---
+
+## ML Model - Initial Implementation
+
+### What was implemented
+
+We implemented a linear regression model trained on 2010-2018 data and was tested on 2019-2023, predicting asylum applications using climate, population and economic variables. 
+
+## Results
+
+- R^2 = 0.43 - explains 43% of variance.
+- MAE = 22,837 applications - moderate error given scale of data and un-predictable causation.
+
+### Difficulties
+
+- From our EAS analysis, we've determined that asylum applications are heavily influenced by geopolitical events (Syria 2015, Ukraine 2022) that climate or economic variables can't predict.
+- With only 378 rows in our cleaned dataset, it limits our model complexity. Therefore, deep models would overfit such a small dataset.
+
+## Tasks remaining
+
+- Integrade another additional feature that can help support model accuracy 
+- Build K-NN classifier using risk labels derived from asylum per 100k
+- Add cross-validation given the small dataset size
+
