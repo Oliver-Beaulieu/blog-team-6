@@ -138,13 +138,25 @@ CREATE TABLE ngo_country (
 
 Chosen to answer our key question, whether climate relates to displacement. Measuring displacement as asylum applications, the results showed a weak but statistically significant correlation between temperature, dry days, and asylum applications per 100k (r=0.26, p<0.05).
 
+![Correlation Heatmap](correlation_heatmap.png)
+
 ### Time series (asylum applications per 100k over time)
 
 Chosen to show that displacement is not uniform across countries. Observing our plot, we can see clear spikes in 2015 for Austria, Germany and Sweden. However, no sever climate event happened, instead, that was the year of the Syrian refugee crisis. This is a clear example of how geopolitical events heavily influence displacement. This type of context is important for interpreting model errors. 
 
+![Time Series](time_series.png)
+
 ### Country comparison bar chart
 
 Chosen to easily interpret asylum rates per population. This graph shows how small countries by population like Cyprus, Malta and Luxemburg show disproportionately high asylum rates. Normalizing by population gives us a more meaningful cross-country comparisons. 
+
+![Country Averages](country_averages.png)
+
+### Actual vs predicted
+
+Used to visualize how model performs against real data from focus countries (Germany, Greece, Sweden, France). We've chosen to represent Germany and France because they are the largest and mose easy to predict based on past data. In addition, we've included Sweden, which gets heavily overestimated due to Sweden limiting asylums in 2015. This is not currently captured by our dataset. 
+
+![Actual vs Predicted](actual_vs_predicted.png)
 
 ---
 
@@ -156,18 +168,18 @@ We implemented a linear regression model trained on 2010-2018 data and was teste
 
 ## Results
 
-- R^2 = 0.43 - explains 43% of variance.
-- MAE = 22,837 applications - moderate error given scale of data and un-predictable causation.
+- R^2 = 0.49 - explains 49% of variance, improved from 0.43 before suggestions to add lag term and standardizing inputs.
+- MAE = 20,546 applications - improved from 22,837 predicted applicates after adding model improvements (lag, standardization).
 
 ### Difficulties
 
 - From our EAS analysis, we've determined that asylum applications are heavily influenced by geopolitical events (Syria 2015, Ukraine 2022) that climate or economic variables can't predict.
 - With only 378 rows in our cleaned dataset, it limits our model complexity. Therefore, deep models would overfit such a small dataset.
+- Sweden has consistant overestimation, however, this is because of post-2015 changes to asylum applications. 
 
 ## Tasks remaining
 
-- Integrade another additional feature that can help support model accuracy 
-- Build K-NN classifier using risk labels derived from asylum per 100k
+- Build Logistic Regression classifier using risk labels derived asylum "pressure" above 30% median for each country. 
 - Add cross-validation given the small dataset size
 
 ## Wireframing
