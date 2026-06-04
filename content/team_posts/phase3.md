@@ -15,11 +15,18 @@ showTableOfContents: true
 ---
 # TERRA: Tracking European Climate Risk & Refugee Asylum
 
-### Updates/Modifcations to Data Model
+## Updates/Modifcations to Data Model and ML
 
 Since the second phase, we've added a lag term `asylum_lag1` to our initial model. After doing this, we saw a moderate increase in R^2 predictions (from 43% to 49%). We added standard scaler fitting to training data, applied to both train and test. Now trains on X_train_scaled and predicts on X_test_scaled. 
 
-### List of Tables
+### Data Model Changes
+In Phase II, our data model was very general and just focused on the main entities we thought TERRA would need like countries, climate indicators, climate events, displacement records, risk assessments, policies, NGOs, and relationship between NGOs and countries which gave us a good starting structure for the most part it was a concept for our database design. 
+
+For Phase III, we updated the model so it better matches our Streamlit app, REST API routes, and machine learning work. One major change was replacing the separate climate_indicator and displacement tables with a broader country_year_data table which would help store the GDP per capita, unemployment rate, population, urban percentage, asylum applications, average temperature, heatwave days, precipitation, dry days, and evapotranspiration. Also helped make the model easier to connect to the prediction model because the ML features are stored in one place by country and year.
+
+Something that was also changed was the app focused tables to help user personas. The roles and users tables support the personas and then the saved_views and saved_view_country tables support Gabriel’s saved comparison views while the watchlist table helps Mohammed’s follow countries information. Furthermore, country_summary_report table helps Diana’s exported country summaries.
+
+## List of Tables
 
 ### Sourced or Generated Data
 
@@ -31,7 +38,33 @@ Our second ML model is a logistic regression classification model that predicts 
 ### Issues with ML Exploration
 There were some issues with creating the second ML model. At first we created a logistic regression classification model that predicted a climate stress score and used that score to calculate whether the risk in the area was low, medium, or high. However, the output said that the accuracy was 92%, and it turned out that there was label leakage. Because of that we decided to make another logistic regression classification model that tries to predict whether a country falls in the top 30% for asylum applications by using the data we cleaned, as well as providing a coefficent table which tells you which categories mattered the most for the prediction. The accuracy is 77%, which while much better than the first model, is still a bit lower than we would like.
 
-### REST API Matrix
+## Pages
 
-### Screenshots
+### Landing Page:
+Main TERRA home page where users choose which persona to enter the app as.
+![Landing](LandingPage.png)
+
+### Diana Home:
+This shows Diana’s Humanitarian Coordinator dashboard including risk priority, NGO support, and countries that may need humanitarian attention.
+![DianaHome](DianaHome.png)
+
+### Diana Add NGO:
+This screen allows Diana to add a new NGO record, including organization name, country, founding year, focus area, and website.
+![DianaNGO](DianaNGO.png)
+
+### Diana Priority Countries:
+This page ranks countries by risk level, displacement pressure, NGO coverage, and recommended action.
+![DianaPriority](DianaPriority.png)
+
+### Gabriel Home:
+Gabriel’s Policy Analyst dashboard focuses on country comparison, risk classification, prediction model results, saved views, and reports.
+![GabrielHome](GabrielHome.png)
+
+### Prediction Model Screenshot:
+This page shows the implemented ML functionality. In the screenshot, the model predicts 140k asylum applications for the entered France 2019 values.
+![Model](Model1Page.png)
+
+## Proposed REST API Matrix:
+Proposed REST API routes for the project including GET, POST, PUT, and DELETE routes. The routes connect back to our app pages and user stories including country comparison, NGO management, risk classification, etc.
+![RESTAPI](RestAPI.png)
 
