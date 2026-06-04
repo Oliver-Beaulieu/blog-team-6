@@ -1,6 +1,6 @@
 ---
 title: "James's Third Week Reflection"
-date: 2026-06-4
+date: 2026-06-04
 draft: false
 description: "Reflection ..."
 tags: ["reflection", "ML", "europe"]
