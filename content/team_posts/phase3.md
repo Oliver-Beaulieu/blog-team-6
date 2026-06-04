@@ -28,6 +28,7 @@ Since the second phase, we've added a lag term `asylum_lag1` to our initial mode
 Our ML data originates from public API's (Open-Metro, Eurostat, and WorldBank) collected and merged into a single dataset of 378 rows covering EU member states from 2010-2023.For Phase 3, we migrated this data into an SQL database, storing training data, and generated model artifacts into one database. This means the app will load the pre-trained weights rather than regenerating weights every run cycle. 
 
 ### Features of the ML
+Our second ML model is a logistic regression classification model that predicts whether a country falls in the top 30% for asylum applications. First it takes the cleaned data from merged_data.csv. Then it creates a binary target variable, where 1 is for high asylum applications and 0 is for not high. After it is trained and scaled properly it outputs the accuracy, a classification report, and how each feature was weighted.
 
 
 ### Issues with ML Exploration
