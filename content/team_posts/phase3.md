@@ -15,8 +15,6 @@ showTableOfContents: true
 ---
 # TERRA: Tracking European Climate Risk & Refugee Asylum
 
-Everything under here is a work in progress
-
 ### Updates/Modifcations to Data Model
 
 Since the second phase, we've added a lag term `asylum_lag1` to our initial model. After doing this, we saw a moderate increase in R^2 predictions (from 43% to 49%). We added standard scaler fitting to training data, applied to both train and test. Now trains on X_train_scaled and predicts on X_test_scaled. 
