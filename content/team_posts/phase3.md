@@ -60,8 +60,12 @@ This page ranks countries by risk level, displacement pressure, NGO coverage, an
 Gabriel’s Policy Analyst dashboard focuses on country comparison, risk classification, prediction model results, saved views, and reports.
 ![GabrielHome](GabrielHome.png)
 
-### Prediction Model Screenshot:
+### Prediction Model Screenshot and Features:
 This page shows the implemented ML functionality. In the screenshot, the model predicts 140k asylum applications for the entered France 2019 values.
+
+For Model 1, we used a linear regression model to predict asylum applications. The features in our model are year, gdp_per_capita, unemployment_rate, population, urban_pct, temp_mean, heatwave_days, precip_total, precip_days_heavy, dry_days, and evapotrans_total. 
+
+We chose these features because we are trying to see how climate risk and country conditions relate to asylum trends across Europe. The economic and demographic features like GDP, unemployment rate, population, and urban percent would help represent a country’s overall context but the climate variables like average temperature, heatwave days, precipitation, heavy precipitation days, dry days, and evapotranspiration, help capture environmental stressors that may be connected to displacement pressure give us the broader conditions of a countries weather events. 
 ![Model](Model1Page.png)
 
 ## Proposed REST API Matrix:
