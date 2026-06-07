@@ -19,41 +19,40 @@ showTableOfContents: true
 ## ER Diagrams and Relational Models
 
 ### Persona 1 - Policy Analyst
-![Policy1](Policy_AnalystER.png)
-![Policy11](GabrielDDL.png)
+![Policy1](GabrielER.png)
 
 ### Localized Data Model Description
 
-The localized data model for our policy analyst tends to focus on climate risk, climate events, and government policy in the EU countries. The country entity is in the middle because all policy, climate events, climate indicator, and risk assessment belong to a specific country and when we are collecting data for them the best way to identify them is by the country they belong to.
+The localized data model for our Policy Analyst focuses on country comparison, yearly country data, risk assessments, government policies, saved views, and policy flags. The country entity is in the middle since his analysis depends on looking at specific EU countries and as a result of this country then connects to yearly data, risk assessments, policies, saved views, and policy flags which all helps the analyst review country conditions, track policy information, and save countries for later comparison.
 
 ### Cardinality
-The entity country has one-to-many relationships with climate_indicator, climate_event, risk_assessment, and policies which just basically means that one country is able to have multiple climate records, events, risk assessments, and policies over time. 
+
+Country has one to many relationships with many entities which means that one country could have multiple yearly records, risk assessments, policies, and flags. Users also has a one to many relationship with saved_view because one user can create many saved views. Country_year_data in this case could be seen as a weak entity because it depends on country and year
+
 
 
 ### Persona 2 - Humanitarian Coordinator
 ![Humanitarian](DianaER.png)
-![Humanitarian1](DianaDDL.png)
 
 ### Localized Data Model Description
 
-The localized data model for our Humanitarian Coordinator aims to focus on displacement, climate risk, and Non-Governmental Organization (NGO) support in the EU countries. The country entity is in the middle because displacement records, risk assessments, and NGO activity all connect back to a specific country where this humanitarian support may be needed.
+The localized data model for our Humanitarian Coordinator mostly focuses on country risk, yearly country data, NGO support, and country summary reports. Once again, country is in the center because Diana needs to identify which EU countries may need humanitarian attention. In her model NGO is here because Diana needs to understand which organizations are operating in different countries. Finally, Country_summary_report is included as it helps report summaries of country conditions, risk, and humanitarian needs which she may need.
 
 ### Cardinality
 
-The entity country has one-to-many relationships with displacement and risk_assessment, which means that countries are able to have multiple displacement records and risk assessments over time. When it comes to the relationship between NGO and country, we label it as a many-to-many through ngo_country, meaning that one NGO is able to operate in many different countries, and one country can have multiple NGOs working there.
+Country here still has a one to many relationship with different entities while user has a one to many relationship with country_summary_report because one user can generate many reports. NGO and country have a many to many relationship because one NGO can operate in many countries and one country can have many NGOs. 
 
 
 ### Persona 3 - Climate-Displaced Student
 ![Student](MohammedER.png)
-![Student1](MohammedDDL.png)
 
 ### Localized Data Model Description
 
-The localized data model for our Climate-Displaced Student aims to focus on climate conditions, climate events, and climate risk in EU countries as he is just browsing through the app to gain more information on what’s going on. Similar to the other personas, the country entity is in the middle because climate indicators, climate events, and risk assessments tend to all belong to a specific country and these countries are used to identify the environmental conditions that might be contributing to climate displacement.
+The localized data model for our Climate-Displaced Student is quite simple as it focuses on watched countries, yearly country data, climate events, and risk assessments. Similarly, to our other personas country is in the center because he is using the app to learn about specific EU countries. In his model climate_event and risk_assessment would help him understand what climate issues are happening and how risky a country may be.
 
 ### Cardinality
 
-The entity country here as one-to-many relationships with climate_indicator, climate_event, and risk_assessment that means one country can have multiple climate records, climate events, and risk assessments over time. This would allow the student persona to be able to compare climate trends and risk levels across different countries.
+Users and countries have a many to many relationship through watches since one user can watch many countries and one country can be watched by many users. Countries have one to many relationships here with country_year_data, climate_event, and risk_assessment but if you look at country_year_data is treated as a weak entity because it depends on country and year.
 
 ### Global
 ![Global1](GlobalER.png)
@@ -62,73 +61,240 @@ The entity country here as one-to-many relationships with climate_indicator, cli
 ## Global Data Model DDL
 
 ```sql
-CREATE TABLE country (
-    country_id INT PRIMARY KEY,
-    country VARCHAR(100) NOT NULL,
+CREATE DATABASE IF NOT EXISTS terra_db;
+
+USE terra_db;
+
+-- TERRA Database
+-- 1. ROLES
+CREATE TABLE IF NOT EXISTS roles (
+    role_id INT NOT NULL AUTO_INCREMENT,
+    role_name VARCHAR(50) NOT NULL UNIQUE,
+    description VARCHAR(255),
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (role_id)
+);
+
+-- 2. USERS
+CREATE TABLE IF NOT EXISTS users (
+    user_id INT NOT NULL AUTO_INCREMENT,
+    role_id INT NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    display_name VARCHAR(100),
+    password_hash VARCHAR(255),
+    is_active BOOLEAN NOT NULL DEFAULT TRUE,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+    created_by INT,
+    updated_by INT,
+    PRIMARY KEY (user_id),
+    FOREIGN KEY (role_id) REFERENCES roles(role_id),
+    FOREIGN KEY (created_by) REFERENCES users(user_id),
+    FOREIGN KEY (updated_by) REFERENCES users(user_id)
+);
+
+-- 3. COUNTRY
+CREATE TABLE IF NOT EXISTS country (
+    country_id INT NOT NULL AUTO_INCREMENT,
+    country_name VARCHAR(100) NOT NULL,
+    country_code CHAR(2) NOT NULL UNIQUE,
     region VARCHAR(100),
-    population INT
+    population INT,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+    created_by INT,
+    updated_by INT,
+    PRIMARY KEY (country_id),
+    FOREIGN KEY (created_by) REFERENCES users(user_id),
+    FOREIGN KEY (updated_by) REFERENCES users(user_id)
 );
 
-CREATE TABLE climate_indicator (
-    indicator_id INT PRIMARY KEY,
+-- 4. COUNTRY_YEAR_DATA
+CREATE TABLE IF NOT EXISTS country_year_data (
+    data_id INT NOT NULL AUTO_INCREMENT,
     country_id INT NOT NULL,
-    year INT,
-    avg_temp DECIMAL(5,2),
-    precipitation INT,
-    flood_risk VARCHAR(50),
-    wildfire_risk VARCHAR(50),
-    FOREIGN KEY (country_id) REFERENCES country(country_id)
+    year INT NOT NULL,
+
+    gdp_per_capita DECIMAL(12,2),
+    unemployment_rate DECIMAL(5,2),
+    population INT,
+    urban_pct DECIMAL(6,3),
+
+    asylum_applications INT,
+
+    temp_mean DECIMAL(5,2),
+    heatwave_days INT,
+    precip_total DECIMAL(10,2),
+    precip_days_heavy INT,
+    dry_days INT,
+    evapotrans_total DECIMAL(10,2),
+
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+    created_by INT,
+    updated_by INT,
+
+    PRIMARY KEY (data_id),
+    UNIQUE KEY uq_country_year (country_id, year),
+    FOREIGN KEY (country_id) REFERENCES country(country_id),
+    FOREIGN KEY (created_by) REFERENCES users(user_id),
+    FOREIGN KEY (updated_by) REFERENCES users(user_id)
 );
 
-CREATE TABLE climate_event (
-    event_id INT PRIMARY KEY,
+-- 5. CLIMATE_EVENT
+CREATE TABLE IF NOT EXISTS climate_event (
+    event_id INT NOT NULL AUTO_INCREMENT,
     country_id INT NOT NULL,
     event_type VARCHAR(100),
     event_date DATE,
     severity VARCHAR(50),
-    FOREIGN KEY (country_id) REFERENCES country(country_id)
+    event_description TEXT,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+    created_by INT,
+    updated_by INT,
+    PRIMARY KEY (event_id),
+    FOREIGN KEY (country_id) REFERENCES country(country_id),
+    FOREIGN KEY (created_by) REFERENCES users(user_id),
+    FOREIGN KEY (updated_by) REFERENCES users(user_id)
 );
 
-CREATE TABLE risk_assessment (
-    risk_id INT PRIMARY KEY,
+-- 6. RISK_ASSESSMENT
+CREATE TABLE IF NOT EXISTS risk_assessment (
+    risk_id INT NOT NULL AUTO_INCREMENT,
     country_id INT NOT NULL,
-    year INT,
+    year INT NOT NULL,
     risk_score DECIMAL(5,2),
     risk_level VARCHAR(50),
-    FOREIGN KEY (country_id) REFERENCES country(country_id)
+    label_method VARCHAR(150),
+    notes TEXT,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+    created_by INT,
+    updated_by INT,
+    PRIMARY KEY (risk_id),
+    UNIQUE KEY uq_risk_country_year (country_id, year),
+    FOREIGN KEY (country_id) REFERENCES country(country_id),
+    FOREIGN KEY (created_by) REFERENCES users(user_id),
+    FOREIGN KEY (updated_by) REFERENCES users(user_id)
 );
 
-CREATE TABLE displacement (
-    record_id INT PRIMARY KEY,
-    country_id INT NOT NULL,
-    year INT,
-    asylum_apps INT,
-    FOREIGN KEY (country_id) REFERENCES country(country_id)
-);
-
-CREATE TABLE policies (
-    policy_id INT PRIMARY KEY,
+-- 7. POLICIES
+CREATE TABLE IF NOT EXISTS policies (
+    policy_id INT NOT NULL AUTO_INCREMENT,
     country_id INT NOT NULL,
     name VARCHAR(150),
     policy_type VARCHAR(100),
     status VARCHAR(50),
+    description TEXT,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+    created_by INT,
+    updated_by INT,
+    PRIMARY KEY (policy_id),
+    FOREIGN KEY (country_id) REFERENCES country(country_id),
+    FOREIGN KEY (created_by) REFERENCES users(user_id),
+    FOREIGN KEY (updated_by) REFERENCES users(user_id)
+);
+
+-- 8. POLICY_FLAG
+CREATE TABLE IF NOT EXISTS policy_flag (
+    flag_id INT NOT NULL AUTO_INCREMENT,
+    country_id INT NOT NULL,
+    user_id INT NOT NULL,
+    flag_status VARCHAR(50) NOT NULL,
+    flag_note TEXT,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (flag_id),
+    FOREIGN KEY (country_id) REFERENCES country(country_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+-- 9. SAVED_VIEWS
+CREATE TABLE IF NOT EXISTS saved_views (
+    view_id INT NOT NULL AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    view_name VARCHAR(150) NOT NULL,
+    year_from INT,
+    year_to INT,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (view_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+-- 10. SAVED_VIEW_COUNTRY
+CREATE TABLE IF NOT EXISTS saved_view_country (
+    view_id INT NOT NULL,
+    country_id INT NOT NULL,
+    PRIMARY KEY (view_id, country_id),
+    FOREIGN KEY (view_id) REFERENCES saved_views(view_id),
     FOREIGN KEY (country_id) REFERENCES country(country_id)
 );
 
-CREATE TABLE ngo (
-    ngo_id INT PRIMARY KEY,
+-- 11. NGO
+CREATE TABLE IF NOT EXISTS ngo (
+    ngo_id INT NOT NULL AUTO_INCREMENT,
     ngo_name VARCHAR(150) NOT NULL,
     focus_area VARCHAR(100),
     contact_email VARCHAR(150),
-    website VARCHAR(200)
+    website VARCHAR(200),
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+    created_by INT,
+    updated_by INT,
+    PRIMARY KEY (ngo_id),
+    FOREIGN KEY (created_by) REFERENCES users(user_id),
+    FOREIGN KEY (updated_by) REFERENCES users(user_id)
 );
 
-CREATE TABLE ngo_country (
+-- 12. NGO_COUNTRY
+CREATE TABLE IF NOT EXISTS ngo_country (
     ngo_id INT NOT NULL,
     country_id INT NOT NULL,
+    operating_status VARCHAR(50) DEFAULT 'Active',
+    support_notes TEXT,
     PRIMARY KEY (ngo_id, country_id),
     FOREIGN KEY (ngo_id) REFERENCES ngo(ngo_id),
     FOREIGN KEY (country_id) REFERENCES country(country_id)
+);
+
+-- 13. WATCHLIST
+CREATE TABLE IF NOT EXISTS watchlist (
+    watchlist_id INT NOT NULL AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    country_id INT NOT NULL,
+    added_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (watchlist_id),
+    UNIQUE KEY uq_watchlist_user_country (user_id, country_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (country_id) REFERENCES country(country_id)
+);
+
+-- 14. COUNTRY_SUMMARY_REPORT
+CREATE TABLE IF NOT EXISTS country_summary_report (
+    report_id INT NOT NULL AUTO_INCREMENT,
+    country_id INT NOT NULL,
+    user_id INT NOT NULL,
+    report_title VARCHAR(150),
+    report_text TEXT,
+    export_format VARCHAR(20),
+    generated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (report_id),
+    FOREIGN KEY (country_id) REFERENCES country(country_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 ```
 
