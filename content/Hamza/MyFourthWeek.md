@@ -1,6 +1,6 @@
 ---
 title: "Hamza's Second Week Reflection"
-date: 2026-6-12
+date: 2026-06-12
 draft: false
 description: "My 4th week and phase 4 contribution"
 tags: ["reflection"]
