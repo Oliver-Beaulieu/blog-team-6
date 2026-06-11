@@ -66,7 +66,7 @@ Our web-app is built in a four-part pipeline, with evertyhing running in docker:
 
 ## ML Models — Fundamental Understanding
 
-Model 1 — Linear Regression (predict asylum_applications)
+Model 1 - Linear Regression (predict asylum_applications)
 
 Linear regression fits a straight-line relationship between a set of input features. It chooses coefficients that minimize squared error. In our case, asylum applications is the target; a count that that can be from a few hundred to thousands, so regression is better than a classification model here.
 
