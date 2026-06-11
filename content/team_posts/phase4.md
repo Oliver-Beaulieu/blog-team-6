@@ -114,7 +114,6 @@ Include the diagnostic plots (these are the ones NOT surfaced in the Streamlit a
 -->
 
 
-
 Assumptions (Model 2)
 
 - Linearity: Residual plots were generated for all three targets (heatwave_days, precip_days_heavy, dry_days). Residuals showed generally random scatter around zero, meaning that lineraity holds.
