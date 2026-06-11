@@ -3,7 +3,7 @@ title: "James Last Week"
 date: 2026-06-11
 draft: false
 description: "Phase 4 discussion and contributions"
-tags: ["reflection", "ml", "europe"]
+tags: ["reflection", "ml", "validation", "europe"]
 authors:
   - "James_Chan"
 showAuthorsBadges: false
