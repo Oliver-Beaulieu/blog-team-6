@@ -1,4 +1,4 @@
-  ---
+---
   title: "Oliver Last Week"
   date: 2026-06-11
   draft: false
@@ -7,7 +7,7 @@
   authors:
     - "oliver_beaulieu"
   showAuthorsBadges: false
-  ---
+---
 
 ## Individual Contributions
 
