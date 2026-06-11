@@ -74,9 +74,13 @@ Linear regression fits a straight-line relationship between a set of input featu
 
 - We decided to exclude calendar year as a feature since the scaler is fit on 2010-2018, so future year made our predictions wildly inaccurate. We only used year to split train/test.
 
+
 Model 2 - Multivariate Linear Regression
 
-Our multivariate linear regression model predicts three climate targets: heatwave_days, precip_days_heavy, and dry_days from gdp_per_capita, unemployment_rate, population, urban_pct, and asylum_applications. 
+Multivariate linear regression expands on a regular linear model to predict multiple outcomes at the same time, in our case three climate targets: heatwave_days, precip_days_heavy, and dry_days from gdp_per_capita, unemployment_rate, population, urban_pct, and asylum_applications. Each target variable shares the same set of predictors, which allows our model to capture correlated climate patterns based on heatwaves, heavy preciptation, and dry days.
+
+- The model standardizes the numeric features (GDP per capita, unemployment rate, population, urban_pct, asylum_applications) and one hot encodes categorical features (country code). This makes it so that it is comparable across scales and prevents bias towards high magnitude variables.
+- We decided to not use year during training to prevent leakage as the scaler was fit on data from 2010-2018. We only used it during the train/test splitting to preserve chronological integrity.
 
 ## Model Assumptions & Predictive Checks (not shown in the web app)
 
@@ -108,6 +112,22 @@ Include the diagnostic plots (these are the ones NOT surfaced in the Streamlit a
   (e.g. geopolitical shocks like Syria 2015 / Ukraine 2022 break independence/linearity;
   Sweden post-2015 overestimation; small-n limits).
 -->
+
+
+
+Assumptions (Model 2)
+
+- Linearity: Residual plots were generated for all three targets (heatwave_days, precip_days_heavy, dry_days). Residuals showed generally random scatter around zero, meaning that lineraity holds.
+- Independance of errors: Since our model uses a random 80/20 split, residual independence is assumed, as no explicit autocorrelation tests are performed.
+- Homoscedasticity: Plots mostly showed constant variance. However, there was a slight funneling for dry days, indicating mild heteroscedasticity.
+- No multicollinearity: Our model uses standardized numeric features and one hot encoded country codes. Feature magnitudes are controlled through scaling.
+
+Predictive Checks (Model 2)
+
+- Train/test split: Our model uses a random 80/20 split via train_test_split, meaning predictive performance is evaluated on a randomly held out subset.
+- Performance: Predictive checks included R², RMSE, and MAE per target. Average R² was 0.72 across the three targets. RMSE and MAE remained consistent between folds and aligned with test‑set performance and confirming model stability.
+- Actual vs predicted: Comparisions between predicted and actual values show that the model captures general trends for all three targets pretty accurately, although heavy preciptation days has slightly wider dispersion.
+
 
 ## Final App Pages / Screenshots
 
