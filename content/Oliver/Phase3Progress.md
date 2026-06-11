@@ -1,9 +1,9 @@
 ---
-title: "Oliver 2nd Week"
+title: "Oliver 3rd Week"
 date: 2026-05-26
 draft: false
-description: "Phase 2 discussion and contributions"
-tags: ["reflection", "sql", "europe"]
+description: "Phase 3 discussion and contributions"
+tags: ["reflection", "phase3", "europe"]
 authors:
   - "oliver_beaulieu"
 showAuthorsBadges: false
