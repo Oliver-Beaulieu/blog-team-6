@@ -43,10 +43,6 @@ Our final model is organized around country and country-year data because TERRA 
 
 The climate_event table stores climate events connected to countries, while risk_assessment stores risk scores and risk levels. The policies and policy_flag tables help support the Policy Analyst by putting gov information and allows to place policy flags. The WorldNGOs, Projects, and Donors tables support the Humanitarian Coordinator by storing information about organizations. The database also includes user tables which tables help make TERRA come off as interactive.
 
-### Global
-![Global1](GlobalER.png)
-![Global](GlobalDDL.png)
-
 ### TERRA MYSql
 ```sql
 CREATE DATABASE IF NOT EXISTS terra_db;
@@ -369,8 +365,6 @@ Multivariate linear regression expands on a regular linear model to predict mult
 - Performance: Predictive checks included R², RMSE, and MAE per target. Average R² was 0.72 across the three targets. RMSE and MAE remained consistent between folds and aligned with test‑set performance and confirming model stability.
 - Actual vs predicted: Comparisions between predicted and actual values show that the model captures general trends for all three targets pretty accurately, although heavy preciptation days has slightly wider dispersion.
 
-
-## Final App Pages / Screenshots
 
 ## Final App Screens
 
