@@ -349,6 +349,12 @@ Multivariate linear regression expands on a regular linear model to predict mult
 ## Model Assumptions & Predictive Checks
 
 ### Linear Regression (Model 1) assumptions
+- Linearity → residuals-vs-fitted plot.
+- Independence of errors → relevant w/ time-series + lag term; Durbin-Watson note.
+- Homoscedasticity → spread of residuals; scale-location plot.
+- Normality of residuals → Q-Q plot / histogram.
+- No multicollinearity → VIF table for the features.
+- Predictive check → cross-validation on the small (378-row) dataset; actual-vs-predicted on held-out years; MAE / R^2 restated
 
 ### Multiple Linear Regression (Model 2) assumptions
 
