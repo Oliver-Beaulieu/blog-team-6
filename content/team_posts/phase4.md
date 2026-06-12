@@ -368,15 +368,6 @@ Include the diagnostic plots (these are the ones NOT surfaced in the Streamlit a
                           calibration (predicted prob vs observed frequency).
   ![Confusion](confusion_matrix.png) ![ROC](roc_curve.png)
 
-### What the diagnostics told us
-- Honest summary: which assumptions held, which were violated, and how that caps confidence
-  (e.g. geopolitical shocks like Syria 2015 / Ukraine 2022 break independence/linearity;
-  Sweden post-2015 overestimation; small-n limits).
--->
-
-
-Assumptions (Model 2)
-
 - Linearity: Residual plots were generated for all three targets (heatwave_days, precip_days_heavy, dry_days). Residuals showed generally random scatter around zero, meaning that lineraity holds.
 - Independance of errors: Since our model uses a random 80/20 split, residual independence is assumed, as no explicit autocorrelation tests are performed.
 - Homoscedasticity: Plots mostly showed constant variance. However, there was a slight funneling for dry days, indicating mild heteroscedasticity.
@@ -388,6 +379,11 @@ Predictive Checks (Model 2)
 - Performance: Predictive checks included R², RMSE, and MAE per target. Average R² was 0.72 across the three targets. RMSE and MAE remained consistent between folds and aligned with test‑set performance and confirming model stability.
 - Actual vs predicted: Comparisions between predicted and actual values show that the model captures general trends for all three targets pretty accurately, although heavy preciptation days has slightly wider dispersion.
 
+### What the diagnostics told us
+- Honest summary: which assumptions held, which were violated, and how that caps confidence
+  (e.g. geopolitical shocks like Syria 2015 / Ukraine 2022 break independence/linearity;
+  Sweden post-2015 overestimation; small-n limits).
+-->
 
 ## Final App Pages / Screenshots
 
