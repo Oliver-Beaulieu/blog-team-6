@@ -345,11 +345,11 @@ Multivariate linear regression expands on a regular linear model to predict mult
 ## Model Assumptions & Predictive Checks
 
 ### Linear Regression (Model 1) assumptions
-- Linearity            → residuals-vs-fitted plot. ![Residual plot](assets/residual_plot.png)
+- Linearity            → residuals-vs-fitted plot. ![Residual plot](residual_plot.png)
 - Independence of errors→ relevant w/ time-series + lag term; Durbin-Watson note.
 - Homoscedasticity     → spread of residuals; scale-location plot.
-- Normality of residuals→ Q-Q plot / histogram. ![Normality of distributions](assets/normality_of_distributions.png)
-- No multicollinearity → VIF table for the features. ![VIF](assets/vif_table.png)
+- Normality of residuals→ Q-Q plot / histogram. ![Normality of distributions](normality_of_distributions.png)
+- No multicollinearity → VIF table for the features. ![VIF](vif_table.png)
 - Predictive check     → cross-validation on the small (378-row) dataset; actual-vs-predicted
                          on held-out years; MAE / R^2 restated.
 
