@@ -345,14 +345,20 @@ Multivariate linear regression expands on a regular linear model to predict mult
 ## Model Assumptions & Predictive Checks
 
 ### Linear Regression (Model 1) assumptions
-- Linearity → residuals-vs-fitted plot.
-- Independence of errors → relevant w/ time-series + lag term; Durbin-Watson note.
-- Homoscedasticity → spread of residuals; scale-location plot.
-- Normality of residuals → Q-Q plot / histogram.
-- No multicollinearity → VIF table for the features.
-- Predictive check → cross-validation on the small (378-row) dataset; actual-vs-predicted on held-out years; MAE / R^2 restated
+- Linearity            → residuals-vs-fitted plot. ![Residual plot](assets/residual_plot.png)
+- Independence of errors→ relevant w/ time-series + lag term; Durbin-Watson note.
+- Homoscedasticity     → spread of residuals; scale-location plot.
+- Normality of residuals→ Q-Q plot / histogram. ![Normality of distributions](assets/normality_of_distributions.png)
+- No multicollinearity → VIF table for the features. ![VIF](assets/vif_table.png)
+- Predictive check     → cross-validation on the small (378-row) dataset; actual-vs-predicted
+                         on held-out years; MAE / R^2 restated.
 
-### Multiple Linear Regression (Model 2) assumptions
+### Logistic Regression (Model 2) assumptions
+- Linearity of the logit, independence, no perfect separation, adequate sample size.
+- No multicollinearity → VIF again.
+- Predictive checks → confusion matrix, classification report, ROC curve / AUC,
+                          calibration (predicted prob vs observed frequency).
+<!-- ![Confusion](confusion_matrix.png) ![ROC](roc_curve.png) -->
 
 - Linearity: Residual plots were generated for all three targets (heatwave_days, precip_days_heavy, dry_days). Residuals showed generally random scatter around zero, meaning that lineraity holds.
 - Independance of errors: Since our model uses a random 80/20 split, residual independence is assumed, as no explicit autocorrelation tests are performed.
