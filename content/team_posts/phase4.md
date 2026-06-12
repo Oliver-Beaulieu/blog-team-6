@@ -43,9 +43,6 @@ Our final model is organized around country and country-year data because TERRA 
 
 The climate_event table stores climate events connected to countries, while risk_assessment stores risk scores and risk levels. The policies and policy_flag tables help support the Policy Analyst by putting gov information and allows to place policy flags. The WorldNGOs, Projects, and Donors tables support the Humanitarian Coordinator by storing information about organizations. The database also includes user tables which tables help make TERRA come off as interactive.
 
-### Global
-![Global1](GlobalER.png)
-![Global](GlobalDDL.png)
 
 ### TERRA MYSql
 ```sql
@@ -349,11 +346,11 @@ Multivariate linear regression expands on a regular linear model to predict mult
 ## Model Assumptions & Predictive Checks
 
 ### Linear Regression (Model 1) assumptions
-- Linearity            → residuals-vs-fitted plot. ![ResidVsFitted](resid_vs_fitted.png)
+- Linearity            → residuals-vs-fitted plot. 
 - Independence of errors→ relevant w/ time-series + lag term; Durbin-Watson note.
 - Homoscedasticity     → spread of residuals; scale-location plot.
-- Normality of residuals→ Q-Q plot / histogram. ![QQ](qq_plot.png)
-- No multicollinearity → VIF table for the features. ![VIF](vif_table.png)
+- Normality of residuals→ Q-Q plot / histogram. 
+- No multicollinearity → VIF table for the features. 
 - Predictive check     → cross-validation on the small (378-row) dataset; actual-vs-predicted
                          on held-out years; MAE / R^2 restated.
 
@@ -362,7 +359,6 @@ Multivariate linear regression expands on a regular linear model to predict mult
 - No multicollinearity → VIF again.
 - Predictive checks     → confusion matrix, classification report, ROC curve / AUC,
                           calibration (predicted prob vs observed frequency).
-  ![Confusion](confusion_matrix.png) ![ROC](roc_curve.png)
 
 - Linearity: Residual plots were generated for all three targets (heatwave_days, precip_days_heavy, dry_days). Residuals showed generally random scatter around zero, meaning that lineraity holds.
 - Independance of errors: Since our model uses a random 80/20 split, residual independence is assumed, as no explicit autocorrelation tests are performed.
@@ -381,37 +377,28 @@ Predictive Checks (Model 2)
   Sweden post-2015 overestimation; small-n limits).
 -->
 
-## Final App Pages / Screenshots
-
 ## Final App Screens
 
 ### Landing Page
 Main TERRA home page where users choose which persona to enter the app as.
-![Landing Page](LandingFinal.png)
 
 ### Policy Analyst Interface
 This page shows the final Policy Analyst experience, focused on country comparison, policy insights, and risk analysis.
-![Policy Analyst](PolicyFinal.png)
 
 ### Humanitarian Coordinator Interface
 This page shows the final Humanitarian Coordinator experience, focused on NGOs, country needs, and humanitarian decision making.
-![Humanitarian Coordinator](HumanitarianFinal.png)
 
 ### Student Interface
 This page shows the student home page designed to help explore climate and displacement information in an accessible way.
-![Student Interface](StudentFinal.png)
 
 ### Model 1 Prediction Page
 This page shows our first machine learning model, which predicts asylum applications based on country-year features.
-![Model 1](HumanModel1.png)
 
 ### Risk / Model 1 Page
 This page shows a risk-focused model output or supporting prediction interface used in the app.
-![Risk Model](RiskModel1.png)
 
 ### Model 2 Classification Page
 This page shows our second machine learning model, which flags whether a country falls into the top 30% for asylum pressure.
-![Model 2](Model2.png)
 
 ## Reflection / What's Next
 
