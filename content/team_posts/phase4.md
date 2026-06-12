@@ -348,10 +348,6 @@ Multivariate linear regression expands on a regular linear model to predict mult
 
 ## Model Assumptions & Predictive Checks
 
-THIS IS THE KEY NEW DELIVERABLE. Document the validation we did behind the scenes.
-For each check: what it tests, how we tested it, what we found, and whether it passed.
-Include the diagnostic plots (these are the ones NOT surfaced in the Streamlit app).
-
 ### Linear Regression (Model 1) assumptions
 - Linearity            → residuals-vs-fitted plot. ![ResidVsFitted](resid_vs_fitted.png)
 - Independence of errors→ relevant w/ time-series + lag term; Durbin-Watson note.
