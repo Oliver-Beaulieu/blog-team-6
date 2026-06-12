@@ -334,9 +334,9 @@ Model 1 - Linear Regression (predict asylum_applications)
 
 Linear regression fits a straight-line relationship between a set of input features. It chooses coefficients that minimize squared error. In our case, asylum applications is the target; a count that that can be from a few hundred to thousands, so regression is better than a classification model here.
 
-- Certain features ended up being pruned with VIF: percip_total (VIF ~= 23.6), evapotrans_total (VIF ~= 13.2), population (VIF ~= 7986) and urban_pct (VIF ~= 338), since they proved to be more of redundant aggregates that were collinear with country identity. 
+- Certain features ended up being pruned with VIF: percip_total (VIF ~= 23.6), evapotrans_total (VIF ~= 13.2), population (VIF ~= 7986) and urban_pct (VIF ~= 338), since they proved to be redundant aggregates that were collinear with a countries identity. 
 
-- We decided to exclude calendar year as a feature since the scaler is fit on 2010-2018, so future year made our predictions wildly inaccurate. We only used year to split train/test.
+- We decided to exclude calendar year as a feature since the scaler is fit on 2010-2018, so future years made our predictions wildly inaccurate. We only used year to split train/test.
 
 
 Model 2 - Multivariate Linear Regression
